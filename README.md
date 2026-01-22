@@ -3,7 +3,7 @@
 
 
 ##SEO OPTIMIZED LIVE PREVIEW
-· [https://maskintell.github.io/Linktree-templates/templates/SEOOPTIMIZED/]
+· [https://maskintell.github.io/Linktree-templates/templates/SEO OPTIMIZED/]
 
 ##GRADIENT GLASS LIVE PREVIEW
 · [https://maskintell.github.io/Linktree-templates/templates/template-02-gradient-glass/]
