@@ -118,9 +118,9 @@ p.description {
   position: absolute;
   width: 100%;
   text-align: center;
-  font-size: var(--font-xl);
+  font-size: 0.85rem;                    
   color: var(--color-accent);
-  font-weight: 400;
+  font-weight: 800;              
   opacity: 0;
   transform: translateY(15px);
   display: flex;
@@ -128,8 +128,11 @@ p.description {
   justify-content: center;
   gap: var(--spacing-sm);
   padding: 0 10px;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Montserrat', sans-serif; 
+  text-transform: uppercase;             
+  letter-spacing: 1.5px;                
   text-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+
 }
 
 .subtitle-dot {
@@ -342,4 +345,5 @@ img[src*="assets/images/avatar"] {
     -webkit-background-clip: unset;
     background-clip: unset;
   }
+
 }
