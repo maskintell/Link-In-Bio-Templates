@@ -105,7 +105,7 @@ p.description {
 
 /* Dynamic Subtitles */
 .subtitle-container {
-  height: 40px;
+  height: 50px;
   margin: var(--spacing-sm) 0 var(--spacing-xxl);
   position: relative;
   overflow: hidden;
@@ -130,7 +130,7 @@ p.description {
   padding: 0 10px;
   font-family: 'Montserrat', sans-serif; 
   text-transform: uppercase;             
-  letter-spacing: 1.5px;                
+  letter-spacing: 1px;                
   text-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
 
 }
@@ -347,5 +347,6 @@ img[src*="assets/images/avatar"] {
   }
 
 }
+
 
 
