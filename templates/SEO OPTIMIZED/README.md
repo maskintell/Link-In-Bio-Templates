@@ -1,4 +1,12 @@
 MASK INTELLIGENCE Link-In-Bio Templates
+VISIT A LIVE DEMO DIRECTLY IN YOUR BROWSER 
+[https://maskintell.github.io/Linktree-templates/templates/SEO%20OPTIMIZED/]
+
+Note: Don't try to modify if you have knowledge about those SEO tags or else you may break them:
+EMAIL US FOR HELP
+[maskintellige@gmail.com]
+or modify other basic templates.
+##THIS TEMPLATE CAN BE DEPLOYED TO GITHUB PAGES FOR FREE
 
 🚀 Overview
 
@@ -614,4 +622,5 @@ Page Speed Score: 95+ (Lighthouse)
 
 ⭐ Star this project if you find it useful!
 🔗 Share with others who need a professional online presence!
+
 🔄 Check back for updates and new features!
