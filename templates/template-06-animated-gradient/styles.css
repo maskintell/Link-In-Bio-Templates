@@ -16,7 +16,7 @@ body {
   justify-content: center;
   padding: 20px;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 @keyframes gradient {
@@ -289,3 +289,4 @@ body {
   0%, 100% { opacity: 0.5; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-5px); }
 }
+
