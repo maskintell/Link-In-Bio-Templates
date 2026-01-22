@@ -1,2 +1,22 @@
-# Linktree-templates
-Take control of your link-in-bio page. Self-hosted, privacy-focused, and fully customizable Linktree alternatives. No monthly fees, no limits—just clean templates you own and control.
+# Link-In-Bio-Templates
+
+
+
+##SEO OPTIMIZED LIVE PREVIEW
+· [https://maskintell.github.io/Linktree-templates/templates/SEO OPTIMIZED/]
+
+##GRADIENT GLASS LIVE PREVIEW
+· [https://maskintell.github.io/Linktree-templates/templates/template-02-gradient-glass/]
+
+##NEON FUTURIC LIVE PREVIEW 
+· [https://maskintell.github.io/Linktree-templates/templates/template-03-neon-futuric/]
+
+##WARM EARTHY LIVE PREVIEW 
+· [https://maskintell.github.io/Linktree-templates/templates/template-04-warm-earthy/]
+
+##PASTEL SOFT LIVE PREVIEW 
+· [https://maskintell.github.io/Linktree-templates/templates/template-05-pastel-soft/]
+
+ANIMATED GRADIENT LIVE PREVIEW 
+· [https://maskintell.github.io/Linktree-templates/templates/template-06-animated-gradient/]
+
