@@ -1,6 +1,3 @@
-// Console log to confirm script is loaded
-console.log("🎨 Animated Gradient Template - JavaScript Loaded!");
-
 // Function to update the last updated date
 function updateLastUpdated() {
   const lastUpdatedElement = document.getElementById('last-updated');
@@ -115,9 +112,21 @@ function addRippleEffect() {
         ripple.remove();
       }, 600);
       
-      console.log(`🌊 Flow to: ${this.textContent}`);
+      console.log(`Flow to: ${this.textContent}`);
     });
   });
+  
+  // Add ripple animation CSS
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes ripple-expand {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 }
 
 // Function to add color shift to links on hover
@@ -129,7 +138,7 @@ function addColorShiftEffect() {
       // Random color shift
       const hue = Math.floor(Math.random() * 360);
       this.style.borderColor = `hsla(${hue}, 70%, 70%, 0.5)`;
-      this.style.boxShadow = `0 15px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 20px hsla(${hue}, 100%, 70%, 0.3)`;
+      this.style.boxShadow += `, 0 0 20px hsla(${hue}, 100%, 70%, 0.3)`;
     });
     
     link.addEventListener('mouseleave', function() {
@@ -186,7 +195,7 @@ function showLoadingAnimation() {
   }, 1500);
 }
 
-// Function to add interactive gradient to container
+// Function to add interactive gradient to links
 function addInteractiveGradient() {
   const container = document.querySelector('.gradient-container');
   
@@ -216,8 +225,6 @@ function addInteractiveGradient() {
 // Function to add dynamic title effect
 function addDynamicTitleEffect() {
   const title = document.querySelector('.gradient-title');
-  if (!title) return;
-  
   const originalText = title.textContent;
   const letters = originalText.split('');
   
@@ -249,15 +256,11 @@ function addDynamicTitleEffect() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("🚀 DOM fully loaded - Initializing animations...");
-  
   // Show loading animation first
   showLoadingAnimation();
   
-  // Initialize after loading animation completes
+  // Initialize after loading
   setTimeout(() => {
-    console.log("✨ Initializing template features...");
-    
     updateLastUpdated();
     createParticles();
     addRippleEffect();
@@ -272,13 +275,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setTimeout(() => {
       document.body.style.opacity = '1';
-      console.log("✅ Page fully loaded and animated!");
     }, 100);
     
     // Add keyboard interaction
     document.addEventListener('keydown', function(e) {
       if (e.code === 'Space') {
-        console.log("🎹 Spacebar pressed - pulse effect!");
         // Pulse effect on spacebar
         const container = document.querySelector('.gradient-container');
         container.style.transform = 'scale(1.05)';
