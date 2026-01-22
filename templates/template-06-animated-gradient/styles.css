@@ -1,9 +1,11 @@
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Main gradient animation on body */
 body {
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
@@ -19,12 +21,14 @@ body {
   overflow: hidden;
 }
 
+/* Main gradient keyframes - MUST HAVE THIS */
 @keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
+/* Container with glass effect */
 .gradient-container {
   width: 100%;
   max-width: 360px;
@@ -59,6 +63,7 @@ body {
   filter: blur(10px);
 }
 
+/* Profile image with floating animation */
 .gradient-profile-img {
   width: 100px;
   height: 100px;
@@ -94,6 +99,7 @@ body {
   filter: blur(10px);
 }
 
+/* Title with gradient text and glow */
 .gradient-title {
   font-size: 1.8rem;
   font-weight: 700;
@@ -111,6 +117,7 @@ body {
   100% { filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)); }
 }
 
+/* Subtitle with fade animation */
 .gradient-subtitle {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
@@ -125,12 +132,14 @@ body {
   100% { opacity: 1; }
 }
 
+/* Links container */
 .gradient-links {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Individual link styling */
 .gradient-link {
   display: block;
   padding: 16px;
@@ -147,6 +156,7 @@ body {
   overflow: hidden;
 }
 
+/* Shimmer effect on links */
 .gradient-link::before {
   content: '';
   position: absolute;
@@ -170,6 +180,7 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
+/* Footer styling */
 .gradient-footer {
   margin-top: 25px;
   font-size: 0.75rem;
@@ -195,6 +206,7 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Mask intelligence link */
 .mask-link {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
@@ -232,7 +244,7 @@ body {
   z-index: 1;
 }
 
-/* Particle styles will be added by JavaScript */
+/* Particle base styles */
 .particle {
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
@@ -240,29 +252,7 @@ body {
   pointer-events: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 400px) {
-  .gradient-container {
-    padding: 30px 20px;
-    border-radius: 20px;
-  }
-  
-  .gradient-title {
-    font-size: 1.6rem;
-  }
-  
-  .gradient-link {
-    padding: 14px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Loading animation */
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
-}
-
+/* Loading animation styles */
 .loading {
   position: fixed;
   top: 0;
@@ -285,7 +275,37 @@ body {
   animation: loading-text 2s ease-in-out infinite;
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
 @keyframes loading-text {
   0%, 100% { opacity: 0.5; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-5px); }
+}
+
+/* Ripple animation for JavaScript */
+@keyframes ripple-expand {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .gradient-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .gradient-title {
+    font-size: 1.6rem;
+  }
+  
+  .gradient-link {
+    padding: 14px;
+    font-size: 0.9rem;
+  }
 }
