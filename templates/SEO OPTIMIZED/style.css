@@ -105,7 +105,7 @@ p.description {
 
 /* Dynamic Subtitles */
 .subtitle-container {
-  height: 32px;
+  height: 40px;
   margin: var(--spacing-sm) 0 var(--spacing-xxl);
   position: relative;
   overflow: hidden;
@@ -347,4 +347,5 @@ img[src*="assets/images/avatar"] {
   }
 
 }
+
 
