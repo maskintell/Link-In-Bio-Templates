@@ -23,7 +23,7 @@
         "name": "Your Name",
         "description": "Digital creator, business consultant, and personal brand expert helping professionals build their online presence.",
         "url": "https://yourwebsite.com",
-        "image": "https://yourwebsite.com/assets/images/avatar.jpg",
+        "image": "assets/images/avatar.jpg", <!-- FIXED: Changed to relative path -->
         "sameAs": [
           "https://instagram.com/yourusername",
           "https://github.com/yourusername",
@@ -149,7 +149,7 @@
   <!-- OPEN GRAPH & TWITTER -->
   <meta property="og:title" content="Your Name | Digital Creator & Business Consultant - Contact Links">
   <meta property="og:description" content="All professional contact links in one place. Connect via WhatsApp, Instagram, Telegram, GitHub, or Email for collaborations and consultations.">
-  <meta property="og:image" content="https://yourwebsite.com/assets/images/avatar.jpg">
+  <meta property="og:image" content="assets/images/avatar.jpg"> <!-- FIXED: Changed to relative path -->
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Professional headshot of Your Name">
@@ -163,16 +163,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Your Name | Contact Links & Professional Profiles">
   <meta name="twitter:description" content="Connect with me on all platforms for business, collaborations, and networking opportunities.">
-  <meta name="twitter:image" content="https://yourwebsite.com/assets/images/avatar.jpg">
+  <meta name="twitter:image" content="assets/images/avatar.jpg"> <!-- FIXED: Changed to relative path -->
   <meta name="twitter:image:alt" content="Professional headshot of Your Name">
   <meta name="twitter:creator" content="@yourusername">
-<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
-<meta name="msapplication-TileColor" content="#0f172a">
-<meta name="msapplication-TileImage" content="/assets/favicon/mstile-144x144.png">
   
   <!-- ========== TECHNICAL OPTIMIZATION ========== -->
   <link rel="canonical" href="https://yourwebsite.com">
-  <link rel="manifest" href="/assets/manifest.json">
+  <link rel="manifest" href="assets/manifest.json"> <!-- FIXED: Changed to relative path -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Your Name Links">
@@ -183,11 +180,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- FAVICONS -->
-  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico"> <!-- FIXED: Changed to relative path -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png"> <!-- FIXED: Changed to relative path -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png"> <!-- FIXED: Changed to relative path -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png"> <!-- FIXED: Changed to relative path -->
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico"> <!-- FIXED: Changed to relative path -->
+  <meta name="msapplication-config" content="assets/favicon/browserconfig.xml"> <!-- FIXED: Changed to relative path -->
+  <meta name="msapplication-TileColor" content="#0f172a">
+  <meta name="msapplication-TileImage" content="assets/favicon/mstile-144x144.png"> <!-- FIXED: Changed to relative path -->
   
   <!-- EXTERNAL FILES -->
   <link rel="stylesheet" href="style.css">
@@ -214,8 +214,7 @@
   <!-- PROFILE WITH LOCAL IMAGE -->
   <img 
     src="assets/images/avatar.jpg" 
-    srcset="assets/images/avatar.jpg 1x, assets/images/avatar@2x.jpg 2x"
-    /*alt="Professional headshot of Your Name, Digital Creator and Business Consultant"*/
+    alt=""
     width="90"
     height="90"
     loading="eager">
@@ -254,17 +253,16 @@
   <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" title="View my GitHub portfolio">GitHub Portfolio</a>
   <a href="mailto:you@example.com?subject=Business Inquiry&body=Hello, I'm interested in..." title="Send professional email for business inquiries">Email: you@example.com</a>
 
-<footer>
-  Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" style="color: #64748b; text-decoration: none;">MASK INTELLIGENCE</a> | Last updated: 
-  <script>
-    document.write(new Date().toLocaleDateString('en-US', {month: 'long', year: 'numeric'}));
-  </script>
-</footer>
+  <footer>
+    Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" style="color: #64748b; text-decoration: none;">MASK INTELLIGENCE</a> | Last updated: 
+    <script>
+      document.write(new Date().toLocaleDateString('en-US', {month: 'long', year: 'numeric'}));
+    </script>
+  </footer>
 </div>
 
 <!-- EXTERNAL JAVASCRIPT -->
 <script src="script.js" defer></script>
 
 </body>
-
 </html>
