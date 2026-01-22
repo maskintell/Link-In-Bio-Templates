@@ -3,36 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Gradient Links</title>
+  <title>My Links</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="gradient-container">
-    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Profile" class="gradient-profile-img">
-    <h1 class="gradient-title">Jordan Kai</h1>
-    <p class="gradient-subtitle">Digital Nomad • Content Creator</p>
+  <div class="container">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Profile" id="profile-img">
+    <h1>Jordan Kai</h1>
+    <p>Digital Nomad • Content Creator</p>
     
-    <div class="gradient-links">
-      <a href="https://wa.me/256700000000" target="_blank" class="gradient-link">WhatsApp</a>
-      <a href="https://instagram.com/yourusername" target="_blank" class="gradient-link">Instagram</a>
-      <a href="https://t.me/yourusername" target="_blank" class="gradient-link">Telegram</a>
-      <a href="https://github.com/yourusername" target="_blank" class="gradient-link">GitHub</a>
-      <a href="mailto:you@example.com" class="gradient-link">Email</a>
+    <div class="links">
+      <a href="https://wa.me/256700000000" target="_blank" class="link-btn">WhatsApp</a>
+      <a href="https://instagram.com/yourusername" target="_blank" class="link-btn">Instagram</a>
+      <a href="https://t.me/yourusername" target="_blank" class="link-btn">Telegram</a>
+      <a href="https://github.com/yourusername" target="_blank" class="link-btn">GitHub</a>
+      <a href="mailto:you@example.com" class="link-btn">Email</a>
     </div>
     
-    <footer class="gradient-footer">
-      Always evolving • Forever creating
-      <footer class="gradient-subfooter">
-        Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" class="mask-link">MASK INTELLIGENCE</a> | Last updated: <span id="last-updated"></span>
-      </footer>
+    <footer>
+      Always evolving • Forever creating<br>
+      Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" class="footer-link">MASK INTELLIGENCE</a> | 
+      Last updated: <span id="current-date"></span>
     </footer>
   </div>
-  
-  <!-- Floating particles container -->
-  <div class="particles"></div>
-  
-  <!-- JavaScript file -->
+
   <script src="script.js"></script>
 </body>
 </html>
