@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background: #0d1117;
+            min-height: 100vh;
+            padding: 20px;
+            color: #00ff41;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Scanline effect */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 255, 65, 0.02) 50%,
+                transparent 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* CRT screen effect */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            pointer-events: none;
+            z-index: 998;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Terminal Window */
+        .terminal {
+            background: #161b22;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 40px rgba(0, 255, 65, 0.1),
+                0 0 80px rgba(0, 255, 65, 0.05);
+            border: 1px solid #30363d;
+            animation: terminalBoot 0.5s ease-out;
+        }
+
+        @keyframes terminalBoot {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Terminal Header */
+        .terminal-header {
+            background: #0d1117;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        .terminal-button.close { background: #ff5f56; }
+        .terminal-button.minimize { background: #ffbd2e; }
+        .terminal-button.maximize { background: #27c93f; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: #8b949e;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Terminal Body */
+        .terminal-body {
+            padding: 24px;
+            min-height: 500px;
+        }
+
+        /* Welcome Message */
+        .welcome {
+            margin-bottom: 30px;
+            animation: typeIn 1s steps(40);
+            overflow: hidden;
+        }
+
+        @keyframes typeIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .welcome-line {
+            color: #58a6ff;
+            margin-bottom: 8px;
+            white-space: nowrap;
+        }
+
+        .user-info {
+            color: #00ff41;
+            margin: 20px 0;
+        }
+
+        .ascii-art {
+            color: #f78166;
+            font-size: 10px;
+            line-height: 1.2;
+            margin: 20px 0;
+            white-space: pre;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Command Prompt */
+        .prompt {
+            display: flex;
+            align-items: center;
+            margin: 20px 0 16px 0;
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .prompt-symbol {
+            color: #00ff41;
+            margin-right: 8px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #00ff41;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Links as Commands */
+        .commands {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .command-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: rgba(88, 166, 255, 0.05);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #00ff41;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out backwards;
+        }
+
+        .command-link:nth-child(1) { animation-delay: 0.1s; }
+        .command-link:nth-child(2) { animation-delay: 0.2s; }
+        .command-link:nth-child(3) { animation-delay: 0.3s; }
+        .command-link:nth-child(4) { animation-delay: 0.4s; }
+        .command-link:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .command-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: #00ff41;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .command-link:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: #58a6ff;
+            transform: translateX(8px);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+        }
+
+        .command-link:hover::before {
+            transform: scaleY(1);
+        }
+
+        .command-symbol {
+            color: #8b949e;
+            font-size: 14px;
+        }
+
+        .command-name {
+            color: #58a6ff;
+            font-weight: 600;
+            min-width: 140px;
+        }
+
+        .command-description {
+            color: #8b949e;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        .command-arrow {
+            color: #00ff41;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .command-link:hover .command-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Social Links */
+        .social-section {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #30363d;
+        }
+
+        .social-header {
+            color: #58a6ff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: rgba(88, 166, 255, 0.05);
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #00ff41;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: #58a6ff;
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            color: #58a6ff;
+        }
+
+        /* Footer Info */
+        .terminal-footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 12px;
+        }
+
+        .footer-line {
+            margin-bottom: 6px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff41;
+            margin-right: 6px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Help Text */
+        .help-text {
+            margin: 24px 0;
+            padding: 16px;
+            background: rgba(88, 166, 255, 0.03);
+            border-left: 3px solid #58a6ff;
+            border-radius: 4px;
+            color: #8b949e;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .help-command {
+            color: #00ff41;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terminal-body {
+                padding: 16px;
+            }
+
+            .ascii-art {
+                font-size: 8px;
+            }
+
+            .command-link {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .command-name {
+                min-width: auto;
+            }
+
+            .command-description {
+                font-size: 12px;
+            }
+
+            .social-links {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .command-description {
+                display: none;
+            }
+
+            .command-name {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="terminal">
+            <!-- Terminal Header -->
+            <div class="terminal-header">
+                <button class="terminal-button close"></button>
+                <button class="terminal-button minimize"></button>
+                <button class="terminal-button maximize"></button>
+                <span class="terminal-title">bash - links.sh</span>
+            </div>
+
+            <!-- Terminal Body -->
+            <div class="terminal-body">
+                <!-- Welcome Message -->
+                <div class="welcome">
+                    <div class="welcome-line">Last login: Fri Jan 24 02:15:42 on ttys001</div>
+                    <div class="welcome-line">Welcome to DevLinks Terminal v2.1.0</div>
+                </div>
+
+                <!-- ASCII Art Profile -->
+                <div class="ascii-art">
+    ██████╗ ███████╗██╗   ██╗    ██╗     ██╗███╗   ██╗██╗  ██╗███████╗
+    ██╔══██╗██╔════╝██║   ██║    ██║     ██║████╗  ██║██║ ██╔╝██╔════╝
+    ██║  ██║█████╗  ██║   ██║    ██║     ██║██╔██╗ ██║█████╔╝ ███████╗
+    ██║  ██║██╔══╝  ╚██╗ ██╔╝    ██║     ██║██║╚██╗██║██╔═██╗ ╚════██║
+    ██████╔╝███████╗ ╚████╔╝     ███████╗██║██║ ╚████║██║  ██╗███████║
+    ╚═════╝ ╚══════╝  ╚═══╝      ╚══════╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
+                </div>
+
+                <!-- User Info -->
+                <div class="user-info">
+                    <div>user@devmachine:~$ whoami</div>
+                    <div style="color: #f78166; margin: 8px 0 4px 0;">Alex Developer</div>
+                    <div style="color: #8b949e; font-size: 14px;">Full Stack Engineer | Open Source Contributor</div>
+                </div>
+
+                <!-- Help Text -->
+                <div class="help-text">
+                    💡 <span class="help-command">TIP:</span> Click any command below to execute (navigate to link)
+                </div>
+
+                <!-- Command Prompt -->
+                <div class="prompt">
+                    <span class="prompt-symbol">$</span>
+                    <span>ls -la ./links/</span>
+                    <span class="cursor"></span>
+                </div>
+
+                <!-- Commands (Links) -->
+                <div class="commands">
+                    <a href="https://yourportfolio.com" class="command-link" target="_blank">
+                        <span class="command-symbol">$</span>
+                        <span class="command-name">./portfolio</span>
+                        <span class="command-description">View my projects and case studies</span>
+                        <i class="fas fa-arrow-right command-arrow"></i>
+                    </a>
+
+                    <a href="https://yourblog.com" class="command-link" target="_blank">
+                        <span class="command-symbol">$</span>
+                        <span class="command-name">./blog</span>
+                        <span class="command-description">Read articles about code and tech</span>
+                        <i class="fas fa-arrow-right command-arrow"></i>
+                    </a>
+
+                    <a href="https://github.com/yourusername" class="command-link" target="_blank">
+                        <span class="command-symbol">$</span>
+                        <span class="command-name">./github</span>
+                        <span class="command-description">Check out my open source contributions</span>
+                        <i class="fas fa-arrow-right command-arrow"></i>
+                    </a>
+
+                    <a href="https://yourprojects.com" class="command-link" target="_blank">
+                        <span class="command-symbol">$</span>
+                        <span class="command-name">./projects</span>
+                        <span class="command-description">Explore my side projects and experiments</span>
+                        <i class="fas fa-arrow-right command-arrow"></i>
+                    </a>
+
+                    <a href="mailto:hello@youremail.com" class="command-link">
+                        <span class="command-symbol">$</span>
+                        <span class="command-name">./contact</span>
+                        <span class="command-description">Send me an email for collaboration</span>
+                        <i class="fas fa-arrow-right command-arrow"></i>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-section">
+                    <div class="social-header">
+                        <span>$</span>
+                        <span>cat ./social_links.txt</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
+                            <i class="fab fa-twitter social-icon"></i>
+                            <span>twitter</span>
+                        </a>
+                        <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in social-icon"></i>
+                            <span>linkedin</span>
+                        </a>
+                        <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+                            <i class="fab fa-instagram social-icon"></i>
+                            <span>instagram</span>
+                        </a>
+                        <a href="https://youtube.com/@yourchannel" class="social-link" target="_blank">
+                            <i class="fab fa-youtube social-icon"></i>
+                            <span>youtube</span>
+                        </a>
+                        <a href="https://dev.to/yourusername" class="social-link" target="_blank">
+                            <i class="fab fa-dev social-icon"></i>
+                            <span>dev.to</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Terminal Footer -->
+                <div class="terminal-footer">
+                    <div class="footer-line">
+                        <span class="status-indicator"></span>
+                        <span>System Status: Online</span>
+                    </div>
+                    <div class="footer-line">Last Updated: Jan 2026</div>
+                    <div class="footer-line">Terminal Session ID: #42069</div>
+                    Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" style="color: #64748b; text-decoration: none;">MASK INTELLIGENCE</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Typing effect for commands
+        const commands = document.querySelectorAll('.command-link');
+        let typingSound = false;
+
+        commands.forEach(cmd => {
+            cmd.addEventListener('mouseenter', function() {
+                if (!typingSound) {
+                    // Could add typing sound here
+                    typingSound = true;
+                    setTimeout(() => typingSound = false, 300);
+                }
+            });
+        });
+
+        // Click tracking
+        commands.forEach(cmd => {
+            cmd.addEventListener('click', function() {
+                const commandName = this.querySelector('.command-name').textContent;
+                console.log('Command executed:', commandName);
+                
+                // Visual feedback
+                this.style.background = 'rgba(0, 255, 65, 0.2)';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 200);
+            });
+        });
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            konamiCode = konamiCode.slice(-10);
+
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                document.body.style.animation = 'none';
+                document.body.style.background = '#00ff41';
+                setTimeout(() => {
+                    document.body.style.background = '#0d1117';
+                    alert('🎮 Achievement Unlocked: Konami Code Master!');
+                }, 100);
+            }
+        });
+
+        // Simulate random terminal activity
+        setInterval(() => {
+            const cursor = document.querySelector('.cursor');
+            if (cursor) {
+                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+            }
+        }, 530);
+    </script>
+</body>
+</html>
