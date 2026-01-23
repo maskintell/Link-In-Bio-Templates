@@ -21,13 +21,13 @@ ANIMATED GRADIENT LIVE PREVIEW
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-06-animated-gradient/]
 
 ##RETRO NEON
-[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-07-retro-neon]
+[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-07-retro-neon/]
 
 ##BRUTALIST
-[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-08-brutalist]
+[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-08-brutalist/]
 
 ##TERMINAL LIVE PREVIEW
-[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-09-terminal]
+[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-09-terminal/]
 
 ##BENTO LIVE PREVIEW
-[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-10-bento]
+[https://maskintell.github.io/Link-In-Bio-Templates/templates/template-10-bento/]
