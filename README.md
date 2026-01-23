@@ -2,34 +2,34 @@
 
 
 
-##SEO OPTIMIZED LIVE PREVIEW
+## SEO OPTIMIZED LIVE PREVIEW
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/SEO%20OPTIMIZED]
 
-##GRADIENT GLASS LIVE PREVIEW
+## GRADIENT GLASS LIVE PREVIEW
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-02-gradient-glass/]
 
-##NEON FUTURIC LIVE PREVIEW 
+## NEON FUTURIC LIVE PREVIEW 
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-03-neon-futuric/]
 
-##WARM EARTHY LIVE PREVIEW 
+## WARM EARTHY LIVE PREVIEW 
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-04-warm-earthy/]
 
-##PASTEL SOFT LIVE PREVIEW 
+## PASTEL SOFT LIVE PREVIEW 
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-05-pastel-soft/]
 
-ANIMATED GRADIENT LIVE PREVIEW 
+## ANIMATED GRADIENT LIVE PREVIEW 
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-06-animated-gradient/]
 
-##RETRO NEON
+## RETRO NEON
 [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-07-retro-neon/]
 
-##BRUTALIST
+## BRUTALIST
 [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-08-brutalist/]
 
-##TERMINAL LIVE PREVIEW
+## TERMINAL LIVE PREVIEW
 [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-09-terminal/]
 
-##BENTO LIVE PREVIEW
+## BENTO LIVE PREVIEW
 [https://maskintell.github.io/Link-In-Bio-Templates/templates/template-10-bento/]
 
 
