@@ -89,9 +89,9 @@ Designing fast, intelligent, and deployable web experiences.
 🚀 Build something amazing
 
 IF YOU NEED A CUSTOM LINK IN BIO, YOU CAN;
-[EMAIL US](maskintelligence@gmail.com)
-[CALL DIRECT](+256791715573)
+[EMAIL US](mailto:maskintelligence@gmail.com)
+[CALL DIRECT](tel:+256791715573)
 
 ##FOR MORE SERVICES##
 **CHECK OUT ON OUR WEBSITE**
-##**[MASK INTELLIGENCE](https://mask-intelligence.web.app)**##
+##**[MASK INTELLIGENCE](https://mask-intelligence.web.app)##**
