@@ -2,7 +2,7 @@
 
 
 
-## SEO OPTIMIZED LIVE PREVIEW
+**SEO OPTIMIZED LIVE PREVIEW**
 · [https://maskintell.github.io/Link-In-Bio-Templates/templates/SEO%20OPTIMIZED]
 
 ## GRADIENT GLASS LIVE PREVIEW
