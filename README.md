@@ -24,6 +24,17 @@
 
 
 
+# **💝 SUPPORT & FUND THIS PROJECT**
+
+**If you find these templates useful and want to support further development, you can contribute via:**
+
+## 🚀 [DONATE VIA MTN MOBILE MONEY](https://maskintell.github.io/Link-In-Bio-Templates/fund-this-project)
+**(UGANDA & OTHERS THAT SUPPORT MTN)**
+
+**Your support helps create more free templates and maintain the project!**
+
+---
+
 ## 🛠️ Customization
 
 Just open `index.html` and change:
