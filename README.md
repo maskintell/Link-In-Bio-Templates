@@ -12,7 +12,7 @@
 
 - **[PASTEL SOFT LIVE PREVIEW](https://maskintell.github.io/Link-In-Bio-Templates/templates/template-05-pastel-soft/)**
 
--**[ANIMATED GRADIENT LIVE PREVIEW](https://maskintell.github.io/Link-In-Bio-Templates/templates/template-06-animated-gradient/)**
+- **[ANIMATED GRADIENT LIVE PREVIEW](https://maskintell.github.io/Link-In-Bio-Templates/templates/template-06-animated-gradient/)**
 
 - **[RETRO NEON LIVE PREVIEW](https://maskintell.github.io/Link-In-Bio-Templates/templates/template-07-retro-neon/)**
 
