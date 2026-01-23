@@ -94,6 +94,6 @@ IF YOU NEED A CUSTOM LINK IN BIO, YOU CAN;
 **CALL DIRECT**
 (256791715573)
 
-##FOR MORE SERVICES##
+FOR MORE SERVICES
 **CHECK OUT ON OUR WEBSITE**
-##**[MASK INTELLIGENCE](https://mask-intelligence.web.app)##**
+**[MASK INTELLIGENCE](https://mask-intelligence.web.app)**
