@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON LINKS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', monospace;
+            background: #0a0a0f;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        /* Static grid background - no animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 255, 0.05) 25%, rgba(255, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%),
+                linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 0, 255, 0.05) 75%, rgba(255, 0, 255, 0.05) 76%, transparent 77%);
+            background-size: 100px 100px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Static sun/moon - no animation */
+        .retro-sun {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at center, #ff00ff 0%, #ff6ec7 50%, #ffd700 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px #ff00ff,
+                0 0 100px #ff00ff,
+                0 0 140px rgba(255, 0, 255, 0.5);
+            z-index: 0;
+        }
+
+        /* Static sun rays */
+        .retro-sun::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: 
+                linear-gradient(0deg, transparent 45%, rgba(255, 0, 255, 0.2) 50%, transparent 55%),
+                linear-gradient(45deg, transparent 45%, rgba(255, 0, 255, 0.2) 50%, transparent 55%),
+                linear-gradient(90deg, transparent 45%, rgba(0, 255, 255, 0.2) 50%, transparent 55%),
+                linear-gradient(135deg, transparent 45%, rgba(0, 255, 255, 0.2) 50%, transparent 55%);
+            border-radius: 50%;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding-top: 250px;
+        }
+
+        /* Profile Section - static but with neon effects */
+        .profile {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff00ff;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            box-shadow: 
+                0 0 20px #ff00ff,
+                0 0 40px #ff00ff;
+        }
+
+        /* Static neon rings */
+        .neon-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .neon-ring:nth-child(1) {
+            width: 160px;
+            height: 160px;
+            border-color: #00ffff;
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .neon-ring:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            border-color: #ff00ff;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+
+        .profile h1 {
+            font-size: 48px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #ff00ff,
+                0 0 40px #ff00ff;
+            margin-bottom: 12px;
+        }
+
+        .profile p {
+            font-size: 16px;
+            color: #00ffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* Links - hover effects only, no entrance animations */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .neon-link {
+            background: rgba(0, 0, 0, 0.5);
+            border: 3px solid;
+            padding: 24px 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .neon-link:nth-child(1) { 
+            border-color: #ff00ff;
+            box-shadow: 
+                0 0 10px #ff00ff,
+                inset 0 0 10px rgba(255, 0, 255, 0.2);
+        }
+
+        .neon-link:nth-child(2) { 
+            border-color: #00ffff;
+            box-shadow: 
+                0 0 10px #00ffff,
+                inset 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .neon-link:nth-child(3) { 
+            border-color: #ff0080;
+            box-shadow: 
+                0 0 10px #ff0080,
+                inset 0 0 10px rgba(255, 0, 128, 0.2);
+        }
+
+        .neon-link:nth-child(4) { 
+            border-color: #00ff00;
+            box-shadow: 
+                0 0 10px #00ff00,
+                inset 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .neon-link:nth-child(5) { 
+            border-color: #ffd700;
+            box-shadow: 
+                0 0 10px #ffd700,
+                inset 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .neon-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .neon-link:hover::before {
+            left: 100%;
+        }
+
+        .neon-link:hover {
+            transform: translateX(10px);
+            box-shadow: 
+                0 0 20px currentColor,
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .neon-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .neon-link:nth-child(1) .neon-icon {
+            background: rgba(255, 0, 255, 0.2);
+            color: #ff00ff;
+            box-shadow: 0 0 15px #ff00ff;
+        }
+
+        .neon-link:nth-child(2) .neon-icon {
+            background: rgba(0, 255, 255, 0.2);
+            color: #00ffff;
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .neon-link:nth-child(3) .neon-icon {
+            background: rgba(255, 0, 128, 0.2);
+            color: #ff0080;
+            box-shadow: 0 0 15px #ff0080;
+        }
+
+        .neon-link:nth-child(4) .neon-icon {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ff00;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .neon-link:nth-child(5) .neon-icon {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        .neon-link:hover .neon-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .neon-text {
+            flex: 1;
+        }
+
+        .neon-title {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .neon-link:nth-child(1) .neon-title { text-shadow: 0 0 8px #ff00ff; }
+        .neon-link:nth-child(2) .neon-title { text-shadow: 0 0 8px #00ffff; }
+        .neon-link:nth-child(3) .neon-title { text-shadow: 0 0 8px #ff0080; }
+        .neon-link:nth-child(4) .neon-title { text-shadow: 0 0 8px #00ff00; }
+        .neon-link:nth-child(5) .neon-title { text-shadow: 0 0 8px #ffd700; }
+
+        .neon-description {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .neon-arrow {
+            font-size: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .neon-link:nth-child(1) .neon-arrow { color: #ff00ff; }
+        .neon-link:nth-child(2) .neon-arrow { color: #00ffff; }
+        .neon-link:nth-child(3) .neon-arrow { color: #ff0080; }
+        .neon-link:nth-child(4) .neon-arrow { color: #00ff00; }
+        .neon-link:nth-child(5) .neon-arrow { color: #ffd700; }
+
+        .neon-link:hover .neon-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Social Links */
+        .social-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 10px #ff00ff;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border: 3px solid;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link:nth-child(1) {
+            border-color: #ff00ff;
+            color: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
+        }
+
+        .social-link:nth-child(2) {
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+        }
+
+        .social-link:nth-child(3) {
+            border-color: #ff0080;
+            color: #ff0080;
+            box-shadow: 0 0 10px #ff0080;
+        }
+
+        .social-link:nth-child(4) {
+            border-color: #00ff00;
+            color: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .social-link:nth-child(5) {
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: currentColor;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 0 20px currentColor;
+        }
+
+        .social-link:hover::before {
+            opacity: 0.2;
+        }
+
+        .social-link i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .retro-sun {
+                width: 150px;
+                height: 150px;
+                top: 60px;
+            }
+
+            .container {
+                padding-top: 200px;
+            }
+
+            .profile h1 {
+                font-size: 36px;
+            }
+
+            .neon-link {
+                padding: 20px;
+                clip-path: none;
+            }
+
+            .neon-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .neon-title {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .neon-description {
+                display: none;
+            }
+
+            .neon-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="retro-sun"></div>
+
+    <div class="container">
+        <!-- Profile -->
+        <div class="profile">
+            <div class="profile-img-wrapper">
+                <div class="neon-ring"></div>
+                <div class="neon-ring"></div>
+                <img src="https://i.pravatar.cc/300" alt="Profile" class="profile-img" loading="lazy">
+            </div>
+            <h1>NEON DREAMS</h1>
+            <p>Synthwave • Retrowave • Vaporwave</p>
+        </div>
+
+        <!-- Links -->
+        <div class="links">
+            <a href="https://yourportfolio.com" class="neon-link" target="_blank">
+                <div class="neon-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="neon-text">
+                    <div class="neon-title">Portfolio</div>
+                    <div class="neon-description">Explore the digital realm</div>
+                </div>
+                <div class="neon-arrow">▶</div>
+            </a>
+
+            <a href="https://yourblog.com" class="neon-link" target="_blank">
+                <div class="neon-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="neon-text">
+                    <div class="neon-title">Blog</div>
+                    <div class="neon-description">Thoughts from the grid</div>
+                </div>
+                <div class="neon-arrow">▶</div>
+            </a>
+
+            <a href="https://yourmusic.com" class="neon-link" target="_blank">
+                <div class="neon-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="neon-text">
+                    <div class="neon-title">Music</div>
+                    <div class="neon-description">Synthwave soundscapes</div>
+                </div>
+                <div class="neon-arrow">▶</div>
+            </a>
+
+            <a href="https://yourshop.com" class="neon-link" target="_blank">
+                <div class="neon-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="neon-text">
+                    <div class="neon-title">Shop</div>
+                    <div class="neon-description">Retro merch & digital goods</div>
+                </div>
+                <div class="neon-arrow">▶</div>
+            </a>
+
+            <a href="mailto:hello@youremail.com" class="neon-link">
+                <div class="neon-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="neon-text">
+                    <div class="neon-title">Contact</div>
+                    <div class="neon-description">Send a transmission</div>
+                </div>
+                <div class="neon-arrow">▶</div>
+            </a>
+        </div>
+
+        <!-- Social -->
+        <div class="social-section">
+            <div class="social-title">// Connect //</div>
+            <div class="social-links">
+                <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@yourchannel" class="social-link" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://spotify.com/artist/you" class="social-link" target="_blank">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="https://soundcloud.com/yourusername" class="social-link" target="_blank">
+                    <i class="fab fa-soundcloud"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer" style="color: #64748b; text-decoration: none;">MASK INTELLIGENCE</a> | Last updated: 
+  <script>
+    document.write(new Date().toLocaleDateString('en-US', {month: 'long', year: 'numeric'}));
+  </script>
+        </div>
+    </div>
+
+    <script>
+        // Simple click tracking without performance-heavy animations
+        document.querySelectorAll('.neon-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const title = this.querySelector('.neon-title').textContent;
+                console.log('Neon link clicked:', title);
+                
+                // Simple feedback effect
+                this.style.opacity = '0.8';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
