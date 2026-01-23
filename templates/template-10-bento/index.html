@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f23;
+            min-height: 100vh;
+            padding: 60px 20px;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Static grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        /* Static glow orbs */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .glow-orb:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #6366f1, transparent);
+            top: -250px;
+            right: -250px;
+        }
+
+        .glow-orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ec4899, transparent);
+            bottom: -200px;
+            left: -200px;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .profile-glow {
+            position: absolute;
+            inset: -20px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.6;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            object-fit: cover;
+        }
+
+        .profile h1 {
+            color: #fff;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+        }
+
+        /* Card Container */
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Flat Card */
+        .card {
+            position: relative;
+            height: 160px;
+        }
+
+        .card-link {
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card-content {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 28px 32px;
+            position: relative;
+            height: 100%;
+        }
+
+        /* Gradient overlays for each card */
+        .card:nth-child(1) .card-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .card:nth-child(2) .card-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .card:nth-child(3) .card-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .card:nth-child(4) .card-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .card:nth-child(5) .card-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        /* Icon section */
+        .card-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 24px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .card:nth-child(1) .card-icon-wrapper {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .card:nth-child(2) .card-icon-wrapper {
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+
+        .card:nth-child(3) .card-icon-wrapper {
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .card:nth-child(4) .card-icon-wrapper {
+            background: linear-gradient(135deg, #22c55e, #10b981);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .card:nth-child(5) .card-icon-wrapper {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+            box-shadow: 0 10px 30px rgba(251, 146, 60, 0.3);
+        }
+
+        .card-icon {
+            font-size: 36px;
+            color: white;
+        }
+
+        /* Content section */
+        .card-text {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        /* Arrow */
+        .card-arrow {
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 18px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .social-link {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 22px;
+            position: relative;
+        }
+
+        /* Footer Styles */
+        .footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            padding: 20px;
+            margin-top: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: #94a3b8;
+        }
+
+        .footer .separator {
+            margin: 0 8px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .profile h1 {
+                font-size: 28px;
+            }
+
+            .card {
+                height: 140px;
+            }
+
+            .card-content {
+                padding: 20px 24px;
+            }
+
+            .card-icon-wrapper {
+                width: 64px;
+                height: 64px;
+                margin-right: 16px;
+            }
+
+            .card-icon {
+                font-size: 28px;
+            }
+
+            .card-title {
+                font-size: 18px;
+            }
+
+            .card-description {
+                font-size: 13px;
+            }
+
+            .card-arrow {
+                width: 40px;
+                height: 40px;
+                right: 20px;
+                font-size: 16px;
+            }
+            
+            .footer {
+                font-size: 12px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-description {
+                display: none;
+            }
+
+            .card {
+                height: 100px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-orb"></div>
+    <div class="glow-orb"></div>
+
+    <div class="container">
+        <!-- Profile -->
+        <div class="profile">
+            <div class="profile-wrapper">
+                <div class="profile-glow"></div>
+                <img src="https://i.pravatar.cc/240" alt="Profile" class="profile-img">
+            </div>
+            <h1>Jordan Blake</h1>
+            <p>Software Engineer & Tech Creator</p>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <a href="https://yourportfolio.com" class="card-link" target="_blank">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-code card-icon"></i>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-title">Portfolio</div>
+                            <div class="card-description">Check out my latest projects and case studies</div>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="https://yourblog.com" class="card-link" target="_blank">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-book-open card-icon"></i>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-title">Tech Blog</div>
+                            <div class="card-description">Read about code, design, and development</div>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="https://youtube.com/@yourchannel" class="card-link" target="_blank">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <i class="fab fa-youtube card-icon"></i>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-title">YouTube Channel</div>
+                            <div class="card-description">Coding tutorials and tech reviews every week</div>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="https://github.com/yourusername" class="card-link" target="_blank">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <i class="fab fa-github card-icon"></i>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-title">GitHub</div>
+                            <div class="card-description">Open source projects and code contributions</div>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <a href="mailto:hello@youremail.com" class="card-link">
+                    <div class="card-content">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-paper-plane card-icon"></i>
+                        </div>
+                        <div class="card-text">
+                            <div class="card-title">Get In Touch</div>
+                            <div class="card-description">Let's collaborate on something amazing</div>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://twitter.com/yourusername" class="social-link" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com/yourusername" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" class="social-link" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://dribbble.com/yourusername" class="social-link" target="_blank">
+                <i class="fab fa-dribbble"></i>
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Built with ⚡ by <a href="https://mask-intelligence.web.app" target="_blank" rel="noopener noreferrer">MASK INTELLIGENCE</a><span class="separator">|</span>Last updated: 
+            <script>
+                document.write(new Date().toLocaleDateString('en-US', {month: 'long', year: 'numeric'}));
+            </script>
+        </div>
+    </div>
+</body>
+</html>
