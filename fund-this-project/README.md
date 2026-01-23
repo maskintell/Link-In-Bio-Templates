@@ -36,7 +36,7 @@
 
 -  Email: maskintelligence@gmail.com
 -  Phone: +256 791 715 573
--  Website: [MASK INTELLIGENCE](mask-intelligence.web.app)
+-  Website: [MASK INTELLIGENCE](https://mask-intelligence.web.app)
 
 ---
 
