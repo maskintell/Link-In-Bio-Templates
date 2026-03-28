@@ -1,6 +1,6 @@
 MASK INTELLIGENCE Link-In-Bio Templates
 VISIT A LIVE DEMO DIRECTLY IN YOUR BROWSER 
-[https://maskintell.github.io/Link-In-Bio-Templates/templates/SEO OPTIMIZED]
+[https://maskintell.github.io/Link-In-Bio-Templates/templates/SEOOPTIMIZED]
 
 Note: Don't try to modify if you have knowledge about those SEO tags or else you may break them:
 EMAIL US FOR HELP
