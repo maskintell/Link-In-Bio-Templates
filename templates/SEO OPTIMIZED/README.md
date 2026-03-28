@@ -12,8 +12,6 @@ or modify other basic templates.
 
 A highly optimized, SEO-friendly, and visually stunning link-in-bio/profile page template designed for professionals, creators, and businesses. This template combines cutting-edge web technologies with comprehensive SEO optimization to create the ultimate digital presence hub.
 
-https://images.unsplash.com/photo-1558655146-364adaf1fcc9?auto=format&fit=crop&w=1200&q=80
-
 ✨ Key Features
 
 🔍 Advanced SEO Optimization
